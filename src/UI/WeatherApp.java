@@ -1,6 +1,7 @@
 package UI;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import businessObjects.Weather;
@@ -8,7 +9,7 @@ import service.WeatherService;
 
 public class WeatherApp {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)   {
 
 		System.out.println("Please enter the city: ");
 		String city = new Scanner(System.in).nextLine();
@@ -22,12 +23,11 @@ public class WeatherApp {
 		System.out.println("Please enter the low: ");
 		int low = new Scanner(System.in).nextInt();
 
-		Weather weather = new Weather();
-		weather.setCity(city);
-		weather.setState(state);
-		weather.setHigh(high);
-		weather.setLow(low);
+		Weather weather = new Weather(high, low, city, state);
 		
+		
+		
+
 		WeatherService weatherService = new WeatherService();
 		System.out.println(weatherService.saveWeather(weather));
 
